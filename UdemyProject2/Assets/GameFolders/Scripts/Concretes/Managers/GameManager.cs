@@ -37,7 +37,14 @@ namespace UdemyProject2.Managers
         private IEnumerator LoadSceneAsync(int levelIndex)
         {
             yield return new WaitForSeconds(_levelDelayTime);
-            yield return SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + levelIndex);
+
+            int buildIndex = SceneManager.GetActiveScene().buildIndex;
+
+            yield return SceneManager.UnloadSceneAsync(buildIndex);
+            SceneManager.LoadSceneAsync(buildIndex + levelIndex, LoadSceneMode.Additive).completed += (AsyncOperation obj) =>
+            {
+                SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(buildIndex + levelIndex));
+            };
         }
 
         public void ExitGame()
