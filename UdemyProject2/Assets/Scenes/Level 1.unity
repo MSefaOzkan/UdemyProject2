@@ -5653,21 +5653,16 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 598555256}
-    - target: {fileID: 941319871387313650, guid: 1816d32c1b596e041aef75aef6fd99be,
-        type: 3}
-      propertyPath: m_Lens.FarClipPlane
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 941319871387313650, guid: 1816d32c1b596e041aef75aef6fd99be,
-        type: 3}
-      propertyPath: m_Lens.NearClipPlane
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 941319871387313651, guid: 1816d32c1b596e041aef75aef6fd99be,
         type: 3}
       propertyPath: m_Name
       value: FollowCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 3527639693859378655, guid: 1816d32c1b596e041aef75aef6fd99be,
+        type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 398352730}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1816d32c1b596e041aef75aef6fd99be, type: 3}
 --- !u!1001 &3161783766261010978

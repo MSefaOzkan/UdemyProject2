@@ -10,6 +10,7 @@ namespace UdemyProject2.Managers
         [SerializeField] private float _levelDelayTime;
 
         public static GameManager Instance { get; set; }
+        public event System.Action<bool> OnSceneChanged;
 
         private void Awake()
         {
@@ -45,11 +46,27 @@ namespace UdemyProject2.Managers
             {
                 SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(buildIndex + levelIndex));
             };
+
+            OnSceneChanged?.Invoke(false);
         }
 
         public void ExitGame()
         {
             Application.Quit();
+        }
+
+        public void LoadMenuAndUi(float delayLoadingTime)
+        {
+            StartCoroutine(LoadMenuAndUiAsync(delayLoadingTime));     
+        }
+
+        private IEnumerator LoadMenuAndUiAsync(float delalLoadingTime)
+        {
+            yield return new WaitForSeconds(delalLoadingTime);
+            yield return SceneManager.LoadSceneAsync("Menu");
+            yield return SceneManager.LoadSceneAsync("Ui", LoadSceneMode.Additive);
+
+            OnSceneChanged?.Invoke(true);
         }
     }
 }
