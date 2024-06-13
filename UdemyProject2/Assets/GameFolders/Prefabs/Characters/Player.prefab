@@ -14,12 +14,13 @@ GameObject:
   - component: {fileID: 8707250683161125093}
   - component: {fileID: 5661415565079810840}
   - component: {fileID: 8707250683161125091}
+  - component: {fileID: 3822651714078973312}
+  - component: {fileID: 44199643378737356}
   - component: {fileID: 8707250683161124893}
   - component: {fileID: 8707250683161125089}
   - component: {fileID: 8707250683161125090}
   - component: {fileID: 6840530326614430213}
   - component: {fileID: 8707250683161124892}
-  - component: {fileID: 3822651714078973312}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -133,6 +134,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7dbb3094fa93094ba5eb885c697d545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3822651714078973312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8707250683161125099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852abc620e0a38241a35962b6293de9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 3
+  _currentHealth: 0
+--- !u!114 &44199643378737356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8707250683161125099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f348a4a4c09d356439609372a2080505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
 --- !u!114 &8707250683161124893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,19 +233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e14ea822ad4b144ebd33b2c81e07c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3822651714078973312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8707250683161125099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852abc620e0a38241a35962b6293de9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 3
 --- !u!1 &8707250683514682617
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +395,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

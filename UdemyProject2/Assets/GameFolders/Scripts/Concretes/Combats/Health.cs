@@ -10,19 +10,33 @@ namespace UdemyProject2.Combats
         [SerializeField] private int _currentHealth = 0;
 
         public bool isDead => _currentHealth < 1;
-        public event System.Action OnHealthChanged;
+       
+        public event System.Action<int> OnHealthChanged;
+        public event System.Action OnDead;
 
         private void Awake()
         {
             _currentHealth = _maxHealth;
         }
 
+        private void Start()
+        {
+            OnHealthChanged?.Invoke(_maxHealth);
+        }
+
         public void TakeHit(Damage damage)
         {
             if (isDead) return;
             _currentHealth -= damage.HitDamage;
-            
-            OnHealthChanged?.Invoke();
+
+            if (isDead)
+            {
+                OnDead?.Invoke();
+            }
+            else
+            {
+                OnHealthChanged?.Invoke(_currentHealth);
+            }
         }
     }
 }

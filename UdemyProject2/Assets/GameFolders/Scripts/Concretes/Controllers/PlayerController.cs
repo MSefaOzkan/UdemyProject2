@@ -5,6 +5,7 @@ using UdemyProject2.Animations;
 using UdemyProject2.Combats;
 using UdemyProject2.Inputs;
 using UdemyProject2.Movements;
+using UdemyProject2.Uis;
 using UnityEngine;
 
 namespace UdemyProject2.Controllers
@@ -36,8 +37,21 @@ namespace UdemyProject2.Controllers
             _input = new PcInput();
         }
 
+        private void OnEnable()
+        {
+            GameCanvas gameCanvas = FindObjectOfType<GameCanvas>();
+            if (gameCanvas != null)
+            {
+                _health.OnDead += gameCanvas.ShowGameOverPanel;
+                DisplayHealth displayHealth = gameCanvas.gameObject.GetComponentInChildren<DisplayHealth>();
+                _health.OnHealthChanged += displayHealth.WriteHealth;
+            }
+        }
+
         private void Update()
         {
+            if (_health.isDead) return;
+
             _xAxis = _input.xAxis;
             _yAxis = _input.yAxis;
 
@@ -67,7 +81,16 @@ namespace UdemyProject2.Controllers
         private void OnCollisionEnter2D(Collision2D collision)
         {
             Damage damage = collision.collider.GetComponent<Damage>();
-            if (damage != null)
+
+            if (collision.collider.GetComponent<EnemyController>() != null &&
+                collision.contacts[0].normal.x > 0.6f ||
+                collision.contacts[0].normal.x < -0.6f)
+            {
+                damage.HitTarget(_health);
+                return;
+            }
+
+            if (damage != null && collision.collider.GetComponent<EnemyController>() == null)
             {
                 damage.HitTarget(_health);
             }

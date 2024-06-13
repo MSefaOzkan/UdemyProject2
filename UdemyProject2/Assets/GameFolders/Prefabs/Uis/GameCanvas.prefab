@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 3324502741911999719}
   - component: {fileID: 8905517484863703242}
   - component: {fileID: 2651755037993928826}
+  - component: {fileID: 5983082345415039242}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -188,6 +189,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5983082345415039242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439840689124330732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4ac6aa7ff6f9940b17f7ade6ae0ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2659809303586542721
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +393,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8936536231549912278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5983082345415039242}
+        m_MethodName: MenuButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3280972235505323855
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +490,7 @@ GameObject:
   - component: {fileID: 5807197652551819271}
   - component: {fileID: 2198613278971598265}
   - component: {fileID: 651141782799896190}
+  - component: {fileID: 8929199495529001849}
   m_Layer: 5
   m_Name: HealthText
   m_TagString: Untagged
@@ -529,8 +554,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -589,6 +614,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8929199495529001849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616832964233315493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485dd5dce99764b49a70618a716839fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7653063076647471473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,6 +638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1767a307fdcd84c90d5b4ce136b457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gamePlayObject: {fileID: 5433579816104746982}
+  _gameOverPanel: {fileID: 5983082345415039242}
 --- !u!1 &7222320336811419697
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +785,7 @@ GameObject:
   - component: {fileID: 7067114100159063233}
   - component: {fileID: 3867154025457381701}
   - component: {fileID: 2452000248090983697}
+  - component: {fileID: 4105666757437960300}
   m_Layer: 5
   m_Name: 'ScoreText '
   m_TagString: Untagged
@@ -809,8 +849,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -869,6 +909,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4105666757437960300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795120595519044660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59893b75a83f64e49b17f6a09cf7c423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7818103996064871681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1307,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6981468910704807035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5983082345415039242}
+        m_MethodName: TryAgainButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &6964214330427009331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1390,15 +1453,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 429e964dadef3204994f652c220d804f, type: 3}
---- !u!1 &236319486761946193 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7197402407510975842, guid: 429e964dadef3204994f652c220d804f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6964214330427009331}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5583175170836167685 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3305272921180673334, guid: 429e964dadef3204994f652c220d804f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6964214330427009331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &236319486761946193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7197402407510975842, guid: 429e964dadef3204994f652c220d804f,
     type: 3}
   m_PrefabInstance: {fileID: 6964214330427009331}
   m_PrefabAsset: {fileID: 0}

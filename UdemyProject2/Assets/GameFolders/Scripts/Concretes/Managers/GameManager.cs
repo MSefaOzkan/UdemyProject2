@@ -8,9 +8,12 @@ namespace UdemyProject2.Managers
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private float _levelDelayTime;
+        [SerializeField] private int _gemCount;
 
         public static GameManager Instance { get; set; }
+
         public event System.Action<bool> OnSceneChanged;
+        public event System.Action<int> OnScoreChanged;
 
         private void Awake()
         {
@@ -50,11 +53,6 @@ namespace UdemyProject2.Managers
             OnSceneChanged?.Invoke(false);
         }
 
-        public void ExitGame()
-        {
-            Application.Quit();
-        }
-
         public void LoadMenuAndUi(float delayLoadingTime)
         {
             StartCoroutine(LoadMenuAndUiAsync(delayLoadingTime));     
@@ -67,6 +65,17 @@ namespace UdemyProject2.Managers
             yield return SceneManager.LoadSceneAsync("Ui", LoadSceneMode.Additive);
 
             OnSceneChanged?.Invoke(true);
+        }
+
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
+
+        public void IncreaseScore(int score = 0)
+        {
+            this._gemCount += score;
+            OnScoreChanged?.Invoke(_gemCount);
         }
     }
 }
