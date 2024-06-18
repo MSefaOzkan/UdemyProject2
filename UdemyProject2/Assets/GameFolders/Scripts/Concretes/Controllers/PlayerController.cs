@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UdemyProject2.Abstracts.Inputs;
 using UdemyProject2.Animations;
 using UdemyProject2.Combats;
+using UdemyProject2.ExtensionMethods;
 using UdemyProject2.Inputs;
 using UdemyProject2.Movements;
 using UdemyProject2.Uis;
@@ -82,15 +83,13 @@ namespace UdemyProject2.Controllers
         {
             Damage damage = collision.collider.GetComponent<Damage>();
 
-            if (collision.collider.GetComponent<EnemyController>() != null &&
-                collision.contacts[0].normal.x > 0.6f ||
-                collision.contacts[0].normal.x < -0.6f)
+            if (collision.WasHitEnemy() && collision.WasHitLeftOrRightSide())
             {
                 damage.HitTarget(_health);
                 return;
             }
 
-            if (damage != null && collision.collider.GetComponent<EnemyController>() == null)
+            if (damage != null && !collision.WasHitEnemy())
             {
                 damage.HitTarget(_health);
             }

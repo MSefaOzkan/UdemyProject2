@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UdemyProject2.Animations;
 using UdemyProject2.Combats;
+using UdemyProject2.ExtensionMethods;
 using UdemyProject2.Movements;
 using UnityEngine;
 
@@ -57,8 +58,7 @@ namespace UdemyProject2.Controllers
         {
             Damage damage = collision.collider.GetComponent<Damage>();
 
-            if (collision.collider.GetComponent<PlayerController>() != null &&
-                collision.contacts[0].normal.y < -0.6f)
+            if (collision.WasHitPlayer() && collision.WasHitBottomSide())
             {
                 damage.HitTarget(_health);
             }
