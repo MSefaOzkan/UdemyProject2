@@ -57,7 +57,7 @@ namespace UdemyProject2.Controllers
         {
             Damage damage = collision.collider.GetComponent<Damage>();
 
-            if (collision.collider.GetComponent<EnemyController>() != null &&
+            if (collision.collider.GetComponent<PlayerController>() != null &&
                 collision.contacts[0].normal.y < -0.6f)
             {
                 damage.HitTarget(_health);
