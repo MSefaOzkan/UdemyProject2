@@ -22,6 +22,11 @@ namespace UdemyProject2.Animations
             _animator.SetFloat("moveSpeed", mathfValue);
         }
 
+        public void DyingAnimaton()
+        {
+            _animator.SetTrigger("dying");
+        }
+
         public void JumpAnimation(bool isJump)
         {
             if (isJump == _animator.GetBool("isJump")) return;

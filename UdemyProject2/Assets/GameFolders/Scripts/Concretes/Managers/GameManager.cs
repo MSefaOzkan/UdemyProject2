@@ -15,6 +15,8 @@ namespace UdemyProject2.Managers
         public event System.Action<bool> OnSceneChanged;
         public event System.Action<int> OnScoreChanged;
 
+        //shift+f12 && shift+ctrl+b 
+
         private void Awake()
         {
             SingeltonProcess();

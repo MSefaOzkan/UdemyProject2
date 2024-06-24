@@ -24,7 +24,12 @@ namespace UdemyProject2.Controllers
         private OnGround _onGround;
         private Climbing _climbing;
         private Health _health;
+        private Damage _damage;
+        private AudioSource _audioSource;
+        [SerializeField] private AudioClip _deadClip;
         private IPlayerInput _input;
+
+        public static event System.Action<AudioClip> OnPlayerDead;
 
         private void Awake()
         {
@@ -35,6 +40,8 @@ namespace UdemyProject2.Controllers
             _onGround = GetComponent<OnGround>();
             _climbing = GetComponent<Climbing>();
             _health = GetComponent<Health>();
+            _damage = GetComponent<Damage>();
+            _audioSource = GetComponent<AudioSource>();
             _input = new PcInput();
         }
 
@@ -47,6 +54,9 @@ namespace UdemyProject2.Controllers
                 DisplayHealth displayHealth = gameCanvas.gameObject.GetComponentInChildren<DisplayHealth>();
                 _health.OnHealthChanged += displayHealth.WriteHealth;
             }
+
+            _health.OnDead += () => OnPlayerDead.Invoke(_deadClip);
+            _health.OnHealthChanged += PlayOnHit;
         }
 
         private void Update()
@@ -81,18 +91,19 @@ namespace UdemyProject2.Controllers
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Damage damage = collision.collider.GetComponent<Damage>();
+            Health health = collision.ObjectHasHealth();
 
-            if (collision.WasHitEnemy() && collision.WasHitLeftOrRightSide())
+            if (health != null && collision.WasHitTopSide())
             {
-                damage.HitTarget(_health);
-                return;
+                health.TakeHit(_damage);
+                _jump.JumpAction();
             }
+        }
 
-            if (damage != null && !collision.WasHitEnemy())
-            {
-                damage.HitTarget(_health);
-            }
+        private void PlayOnHit(int currentHealth, int maxHealth)
+        {
+            if (currentHealth == maxHealth) return;
+            _audioSource.Play();
         }
     }
 }

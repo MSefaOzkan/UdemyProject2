@@ -19,6 +19,9 @@ namespace UdemyProject2.Controllers
         private CharacterAnimation _characterAnimation;
         private OnReachedEdge _onReachedEdge;
         private Flip _flip;
+        [SerializeField] private AudioClip _deadClip;
+
+        public static event System.Action<AudioClip> OnEnemyDead;
 
         private void Awake()
         {
@@ -35,12 +38,14 @@ namespace UdemyProject2.Controllers
         private void OnEnable()
         {
             _health.OnDead += DeadAction;
+            _health.OnDead += () => OnEnemyDead.Invoke(_deadClip);
         }
 
         private void FixedUpdate()
         {
             if (_health.isDead) return;
             _mover.HorizontalAction(_direciton);
+            _characterAnimation.MoveAnimation(_direciton);
         }
 
         private void LateUpdate()
@@ -56,16 +61,23 @@ namespace UdemyProject2.Controllers
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Damage damage = collision.collider.GetComponent<Damage>();
+            Health health = collision.ObjectHasHealth();
 
-            if (collision.WasHitPlayer() && collision.WasHitBottomSide())
+            if (health != null && collision.WasHitLeftOrRightSide())
             {
-                damage.HitTarget(_health);
+                health.TakeHit(_damage);
             }
         }
 
         private void DeadAction()
         {
+             StartCoroutine(DeadActionAsync());
+        }
+
+        private IEnumerator DeadActionAsync()
+        {
+            _characterAnimation.DyingAnimaton();
+            yield return new WaitForSeconds(0.5f);
             Destroy(this.gameObject);
         }
     }

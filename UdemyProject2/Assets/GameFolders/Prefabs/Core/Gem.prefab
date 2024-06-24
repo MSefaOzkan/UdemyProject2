@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _score: 1
+  _gemClip: {fileID: 8300000, guid: 465252b1f527fcd4f9cefc720a141eba, type: 3}
 --- !u!1 &917212220074604855
 GameObject:
   m_ObjectHideFlags: 0
